@@ -3,13 +3,13 @@ const form = document.querySelector('#form');
 //getting the div for the name display
 let firstName = document.querySelector('#firstName');
 
-    let name = prompt('what is your name?');
+    //getting the product value
 
-    if (name == null || name == ''){
-        firstName.style.display = 'none'
-    }  else {
-        firstName.innerHTML = `${name} logout`
-    }
+const product = document.querySelector('#product').value;
+//getting the product price
+const price = document.querySelector('#price').value;
+//getting the delivery method
+const delivery = document.querySelector('#delivery').value;
     
 //adding event listener to the form
 form.addEventListener('submit', saveTask)
@@ -17,13 +17,7 @@ form.addEventListener('submit', saveTask)
 function saveTask(e){
     e.preventDefault()
 
-//getting the product value
 
-const product = document.querySelector('#product').value;
-//getting the product price
-const price = document.querySelector('#price').value;
-//getting the delivery method
-const delivery = document.querySelector('#delivery').value;
 //setting the values to an object
     let card = {
         productName: product,
@@ -47,7 +41,7 @@ const delivery = document.querySelector('#delivery').value;
     const cardHold = document.querySelector('.cardHold');
   
 let savedData = JSON.parse(localStorage.getItem('product'));
-console.log(savedData, 'jjjj')
+
  let cards = savedData.map((product)=>{
      let pName = document.createElement('p');
      pName.textContent = product.productName;
@@ -61,5 +55,31 @@ console.log(savedData, 'jjjj')
     // productArray2.push(product.productName, product.productPrice, product.deliveryMethod)
 })
 
+// let nameArr = [];
+// if(JSON.parse(localStorage.getItem('name') == null)){
+    
+//     nameArr.push(name)
+//     localStorage.setItem('name', JSON.stringify(nameArr))
+// }else{
+//     nameArr.push(name)
+//     localStorage.setItem('name', JSON.stringify(nameArr))
+// }
 }
 
+const storage = localStorage.getItem('auth');
+
+function save(value){
+  localStorage.setItem("auth", value)
+  return value
+}
+
+if(storage) {
+    firstName.innerHTML = `${storage} logout`
+}else{
+    let name = prompt('what is your name?');
+    if (name == null || name == ''){
+        firstName.style.display = 'none'
+    }  else {
+        firstName.innerHTML = `${save(name)} logout`
+    }
+}
