@@ -2,25 +2,26 @@
 const form = document.querySelector('form');
 //getting the div for the name display
 let firstName = document.querySelector('#firstName');
-
- //getting the product value
+ //getting the product 
  const product = document.querySelector('#product');
  //getting the product price
  const price = document.querySelector('#price');
  //getting the delivery method
  const delivery = document.querySelector('#delivery');
-
+// getting the container for the tasks
 const container = document.querySelector('#container');
 
+//alling the eventlistener function
+fire()
 
-//adding event listener to the form
+function fire(){
+    //adding event listener to the form
     form.addEventListener('submit', tasker);
-
+   //event listener for persisting the ul content on reload 
      document.addEventListener('DOMContentLoaded', persistor);
+    }
     
-
-
-//saveTask function fires when form is submitted
+//tasker function for when the form is submitted
 function tasker(e){
 
     let card = {
@@ -30,36 +31,49 @@ function tasker(e){
     }
 
     // container.style.display = 'flex';
+
+    //calling the addTask to add the inputted tasks to the ui
     addTask()
 
+    //saving the tasks to the local storage
     saveToLS(card);   
      
+    //clearing the values after saving to local storage
     product.value = '';
      price.value = '';
      delivery.value = ''
+    //To prevent the form from reloading when submitted
     e.preventDefault() 
 }
 
+//The addTask function for adding inputted tasks to ui
 function addTask(){
+    //conditional to ensure task values are inputted
       if(product.value == '' || price.value == '' || delivery.value == ''){
           alert('please fill in the missing details')
       }else{
-
+          //creating a p tag
     let pName = document.createElement('p');
+    //adding the product value to the p tag
     pName.appendChild(document.createTextNode(product.value));
     let pPrice = document.createElement('p');
     pPrice.appendChild(document.createTextNode(price.value));
     let pMethod = document.createElement('p');
     pMethod.appendChild(document.createTextNode(delivery.value));
+    //creating a div to house the created p tags
     let cardHold = document.createElement('div');
+    //assigning a class to the div
      cardHold.className = 'cardHold';
+     //appending the p tags to the created div
     cardHold.appendChild(pName);
     cardHold.appendChild(pPrice);
     cardHold.appendChild(pMethod);
+    //appending the div to a div in the ul for display
     container.appendChild(cardHold); 
       }
 }
 
+//saving to local storage
 function saveToLS(value){
     //declaring an empty array to house the object created
 let productArray = [];
@@ -67,8 +81,10 @@ let productArray = [];
    if(product.value !== '' || price.value !== '' || delivery.value !== ''){
     if(localStorage.getItem('product') == null){
         productArray.push(value);
+        //stringify the array before saving to local storage
         localStorage.setItem('product', JSON.stringify(productArray));
     }else {
+        //parsing the stringified arrays back to JSON array
         productArray = JSON.parse(localStorage.getItem('product'));
         productArray.push(value);
         localStorage.setItem('product', JSON.stringify(productArray));
@@ -76,14 +92,17 @@ let productArray = [];
 }
 }
 
+//Persisting the ul contents even if reloaded
 function persistor(){
     let localArray;
+    //conditional to check if the local storage contains 'product'
     if(localStorage.getItem('product') == null){
         localArray = [];
     }else {
      localArray = JSON.parse(localStorage.getItem('product'));
      }
-
+ 
+     //using forEach to loop through the local storage and display on ui
    localArray.forEach(function(element){
     let pName = document.createElement('p');
     pName.appendChild(document.createTextNode(element.productName));
@@ -102,26 +121,33 @@ function persistor(){
 }
 
 
-
+//Saves this value retrieved local storage
 const storage = localStorage.getItem('auth');
 
+//saving to local storage as well as returninng the value 
 function save(value){
   localStorage.setItem('auth', value)
   return value
 }
 
+/*conditional to check if in local storage. 
+If in LS, it displays the LS value stored in storage*/
 if(storage) {
     firstName.innerHTML += storage
 }else{
+    //else it prompts for input
     let name = prompt('what is your name?')
+    //checks if input value is null or empty and displays 'welcome'
     if (name == null || name == ''){
         firstName.innerHTML = 'Welcome'
     }  else {
+        /*else displays the content in 'firstName' p tag and the
+         prompt value saved to local storage*/
         firstName.innerHTML += save(name)
     }
 }
 
-
+//This function redirects out of the current page ie logging out
 function logOut(){
  location.replace('logout.html')
 }
