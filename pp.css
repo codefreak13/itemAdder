@@ -5,10 +5,40 @@ header {
 }
 
 #namer {
-    display: flex
+    display: flex;
+    justify-content: space-between
 }
 
-#namer a {
+#namer span {
+  margin-right: .5rem
+}
+
+#firstName {
+ text-transform: capitalize
+}
+
+#namer button {
   text-decoration: none;
   color: blue;
+  margin-left: 2rem;
+}
+
+#container {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  flex-wrap: wrap;
+} 
+
+.cardHold {
+  border: 1px solid black;
+  width: 20vw;
+  background: grey;
+  margin: 1rem
+}
+
+#container {
+  display: none;
+  border: none
 }
