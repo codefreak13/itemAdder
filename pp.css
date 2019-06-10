@@ -21,6 +21,9 @@ header {
   text-decoration: none;
   color: blue;
   margin-left: 2rem;
+  height: 1.7rem;
+  text-align-last: center;
+  margin-top: .5rem
 }
 
 #container {
@@ -38,7 +41,7 @@ header {
   margin: 1rem
 }
 
-/* #container {
-  display: none;
+#container {
+  /* display: none; */
   border: none
-} */
+}
