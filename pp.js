@@ -13,11 +13,11 @@ let firstName = document.querySelector('#firstName');
 const container = document.querySelector('#container');
 
 
-
-    //adding event listener to the form
+//adding event listener to the form
     form.addEventListener('submit', tasker);
 
-    // document.addEventListener('DOMContentLoaded', persistor)
+     document.addEventListener('DOMContentLoaded', persistor);
+    
 
 
 //saveTask function fires when form is submitted
@@ -29,8 +29,9 @@ function tasker(e){
         deliveryMethod: delivery.value
     }
 
-    container.style.display = 'flex';
+    // container.style.display = 'flex';
     addTask()
+
     saveToLS(card);   
      
     product.value = '';
@@ -75,30 +76,30 @@ let productArray = [];
 }
 }
 
-// function persistor(){
-//     let localArray;
-//     if(localStorage.getItem('product') == null){
-//         localArray = [];
-//     }else {
-//      localArray = JSON.parse(localStorage.getItem('product'));
-//      }
+function persistor(){
+    let localArray;
+    if(localStorage.getItem('product') == null){
+        localArray = [];
+    }else {
+     localArray = JSON.parse(localStorage.getItem('product'));
+     }
 
-//    localArray.forEach(function(element){
-//     let pName = document.createElement('p');
-//     pName.appendChild(document.createTextNode(element.productName));
-//     let pPrice = document.createElement('p');
-//     pPrice.appendChild(document.createTextNode(element.productPrice));
-//     let pMethod = document.createElement('p');
-//     pMethod.appendChild(document.createTextNode(element.deliveryMethod));
+   localArray.forEach(function(element){
+    let pName = document.createElement('p');
+    pName.appendChild(document.createTextNode(element.productName));
+    let pPrice = document.createElement('p');
+    pPrice.appendChild(document.createTextNode(element.productPrice));
+    let pMethod = document.createElement('p');
+    pMethod.appendChild(document.createTextNode(element.deliveryMethod));
     
-//     const cardHold = document.createElement('div');
-//      cardHold.className = 'cardHold';
-//     cardHold.appendChild(pName);
-//     cardHold.appendChild(pPrice);
-//     cardHold.appendChild(pMethod);
-//     container.appendChild(cardHold)
-//    });
-// }
+    const cardHold = document.createElement('div');
+     cardHold.className = 'cardHold';
+    cardHold.appendChild(pName);
+    cardHold.appendChild(pPrice);
+    cardHold.appendChild(pMethod);
+    container.appendChild(cardHold)
+   });
+}
 
 
 
@@ -114,7 +115,6 @@ if(storage) {
 }else{
     let name = prompt('what is your name?')
     if (name == null || name == ''){
-        // firstName.style.display = 'none';
         firstName.innerHTML = 'Welcome'
     }  else {
         firstName.innerHTML += save(name)
