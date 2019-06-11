@@ -7,7 +7,7 @@
     <title>taskAdder</title>
     <link rel="stylesheet" href="pp.css">
 </head> 
-<body>
+<body id="body">
    <header>
       <nav>
           <a href="#">Home</a>
@@ -19,15 +19,31 @@
           <button onclick='logOut()'>logout</button>
       </div>   
   </header>
-  <form action="" >
-    <h3>Create Product</h3>
-    <label for="">Product name</label> : <input type="text" id="product"><br>
-    <label for="">Price</label> : <input type="number" id="price"><br>
-    <label for="">Delivery method</label> : <input type="text" id="delivery"><br>
-    <button>SAVE</button>
-  </form>
+ <div id="formCont">
+    <form id="form1">
+        <h3>PRODUCT FACTORY</h3>
+        <label for="">Product Name</label><br>
+        <input type="text" id="product" placeholder="Product name"><br><br>
+        <label for="">Price</label><br>
+         <input type="number" id="price" placeholder="product price"><br><br>
+        <label for="">Delivery Method</label><br>
+        <input type="text" id="delivery" placeholder="delivery method"><br><br>
+        <button>SAVE</button>
+      </form>
+ </div>
   <div id="container">
   </div>
+  <div id="hidden">
+   <form action="">
+       <div>
+           <h4>Customer/Client Chat Interface</h4>
+            <img src="images/cancel.svg" alt="">
+        </div>
+   </form>
+  </div>
+  <footer>
+      <button>CHAT</button>
+  </footer>
   <script src="pp.js"></script>
 </body>
 </html>
