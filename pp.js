@@ -149,5 +149,8 @@ if(storage) {
 
 //This function redirects out of the current page ie logging out
 function logOut(){
- location.replace('logout.html')
-}
+    location.replace('logout.html')
+   }
+
+
+
