@@ -152,5 +152,12 @@ function logOut(){
     location.replace('logout.html')
    }
 
+//This function opens the chat interface when the chat button in the ui is clicked.  It is called in the HTML
+function chat(){
+    document.querySelector('#hidden').style.display = 'block'
+}
 
-
+//this function hides the chat interface
+function hideChat(){
+    document.querySelector('#hidden').style.display = 'none'
+}
