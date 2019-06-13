@@ -18,7 +18,7 @@ function fire(){
     //adding event listener to the form
     form.addEventListener('submit', tasker);
    //event listener for persisting the ul content on reload 
-     document.addEventListener('DOMContentLoaded', persistor);
+    //  document.addEventListener('DOMContentLoaded', persistor);
     }
     
 //tasker function for when the form is submitted
@@ -60,6 +60,10 @@ function addTask(){
     pPrice.appendChild(document.createTextNode(price.value));
     let pMethod = document.createElement('p');
     pMethod.appendChild(document.createTextNode(delivery.value));
+    //create a delete option
+    let deleteLink = document.createElement('img');
+    //adding attribute
+    deleteLink.setAttribute('src', 'images/cancel.svg');
     //creating a div to house the created p tags
     let cardHold = document.createElement('div');
     //assigning a class to the div
@@ -68,6 +72,7 @@ function addTask(){
     cardHold.appendChild(pName);
     cardHold.appendChild(pPrice);
     cardHold.appendChild(pMethod);
+    // cardHold.appendChild(deleteLink)
     //appending the div to a div in the ul for display
     container.appendChild(cardHold); 
       }
@@ -160,4 +165,10 @@ function chat(){
 //this function hides the chat interface
 function hideChat(){
     document.querySelector('#hidden').style.display = 'none'
+}
+
+//clearing tasks
+function clearTasks(){
+    container.innerHTML = '';
+    localStorage.removeItem('product')
 }
