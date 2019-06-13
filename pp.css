@@ -3,12 +3,17 @@ body {
   margin-top: o;
   box-sizing: content-box;
   background: rgb(159, 171, 204);
-  /* background-image: url(images/pp.jpeg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover */
 }
 
+/* #main {
+  background-image: url(images/dust.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  top: 3rem
+} */
 
 header {
     display: flex;
@@ -60,7 +65,7 @@ input {
 #form1 {
   text-align: center;
   padding: 1rem;
-  background: rgba(240, 248, 255, 0.6);
+  background: rgba(240, 248, 255, 0.8);
   width: 50vw;
   margin: auto;
 }
@@ -78,9 +83,16 @@ input {
 .cardHold {
   border: 1px solid black;
   width: 20vw;
+  height: 15vh;
   background: rgba(116, 110, 110, 0.911);
   margin: 1rem;
-  text-align: center
+  text-align: center;
+  color: aliceblue;
+}
+
+.cardHold img {
+  height: 1rem;
+  width: 1rem;
 }
 
 footer {
@@ -92,7 +104,7 @@ footer {
   height: 3rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end
+  justify-content: space-around
 }
 
 footer button {

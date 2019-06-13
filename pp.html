@@ -7,7 +7,8 @@
     <title>taskAdder</title>
     <link rel="stylesheet" href="pp.css">
 </head> 
-<body id="body">
+<!-- I called onload on the body instead of in DOMContentLoaded in js. The same effect as the former -->
+<body id="body" onload="persistor()">
    <header>
       <nav>
           <a href="#">Home</a>
@@ -19,7 +20,8 @@
           <button onclick='logOut()'>logout</button>
       </div>   
   </header>
- <div id="formCont">
+  <div id="main">
+      <div id="formCont">
     <form id="form1">
         <h3>PRODUCT FACTORY</h3>
         <label for="">Product Name</label><br>
@@ -42,7 +44,9 @@
         <hr>
    </form>
   </div>
+  </div>
   <footer>
+      <button onclick="clearTasks()">CLEAR TASKS</button>
       <button onclick="chat()">CHAT</button>
   </footer>
   <script src="pp.js"></script>
