@@ -78,9 +78,9 @@ function addTask(){
       }
 }
 
-function removeFromUI(e){
-    e.target.parentElement.
-}
+// function removeFromUI(e){
+//     e.target.parentElement.
+// }
 
 //saving to local storage
 function saveToLS(value){
