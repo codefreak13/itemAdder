@@ -10,6 +10,7 @@ let firstName = document.querySelector('#firstName');
  const delivery = document.querySelector('#delivery');
 // getting the container for the tasks
 const container = document.querySelector('#container');
+const deletor = document.querySelector('.cardHold')
 
 //calling the eventlistener function
 fire()
@@ -17,8 +18,9 @@ fire()
 function fire(){
     //adding event listener to the form
     form.addEventListener('submit', tasker);
+    container.addEventListener('click', removeFromUI);
    //event listener for persisting the ul content on reload 
-    //  document.addEventListener('DOMContentLoaded', persistor);
+    //document.addEventListener('DOMContentLoaded', persistor);
     }
     
 //tasker function for when the form is submitted
@@ -62,8 +64,12 @@ function addTask(){
     pMethod.appendChild(document.createTextNode(delivery.value));
     //create a delete option
     let deleteLink = document.createElement('img');
+    deleteLink.className = 'delete';
     // adding attribute
     deleteLink.setAttribute('src', 'images/cancel.svg');
+    let pDelete = document.createElement('p');
+    pDelete.className = 'pDelete';
+    pDelete.appendChild(deleteLink);
     //creating a div to house the created p tags
     let cardHold = document.createElement('div');
     //assigning a class to the div
@@ -72,15 +78,16 @@ function addTask(){
     cardHold.appendChild(pName);
     cardHold.appendChild(pPrice);
     cardHold.appendChild(pMethod);
-    cardHold.appendChild(deleteLink);
+    cardHold.appendChild(pDelete);
     //appending the div to a div in the ul for display
     container.appendChild(cardHold); 
       }
 }
 
-// function removeFromUI(e){
-//     e.target.parentElement.
-// }
+function removeFromUI(e){
+    if(e.target.classList.contains('delete')){
+    e.target.parentElement.parentElement.remove()}
+}
 
 //saving to local storage
 function saveToLS(value){
@@ -121,8 +128,12 @@ function persistor(){
     pMethod.appendChild(document.createTextNode(element.deliveryMethod));
     //create a delete option
     let deleteLink = document.createElement('img');
+    deleteLink.className = 'delete';
     // adding attribute
     deleteLink.setAttribute('src', 'images/cancel.svg');
+    let pDelete = document.createElement('p');
+    pDelete.className = 'pDelete';
+    pDelete.appendChild(deleteLink);
     //creating a div to house the created p tags
     let cardHold = document.createElement('div');
     
@@ -130,7 +141,7 @@ function persistor(){
     cardHold.appendChild(pName);
     cardHold.appendChild(pPrice);
     cardHold.appendChild(pMethod);
-    cardHold.appendChild(deleteLink)
+    cardHold.appendChild(pDelete)
 
     container.appendChild(cardHold)
    });

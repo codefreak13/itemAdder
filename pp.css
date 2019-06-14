@@ -90,6 +90,11 @@ input {
   color: aliceblue;
 }
 
+.pDelete {
+  position: relative;
+  top: 0
+}
+
 .cardHold img {
   height: 1rem;
   width: 1rem;
