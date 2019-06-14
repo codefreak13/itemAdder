@@ -11,7 +11,7 @@ let firstName = document.querySelector('#firstName');
 // getting the container for the tasks
 const container = document.querySelector('#container');
 
-//alling the eventlistener function
+//calling the eventlistener function
 fire()
 
 function fire(){
@@ -28,12 +28,12 @@ function tasker(e){
         productName: product.value,
         productPrice: price.value,
         deliveryMethod: delivery.value
-    }
+    };
 
     // container.style.display = 'flex';
 
     //calling the addTask to add the inputted tasks to the ui
-    addTask()
+    addTask();
 
     //saving the tasks to the local storage
     saveToLS(card);   
@@ -41,7 +41,7 @@ function tasker(e){
     //clearing the values after saving to local storage
     product.value = '';
      price.value = '';
-     delivery.value = ''
+     delivery.value = '';
     //To prevent the form from reloading when submitted
     e.preventDefault() 
 }
@@ -62,7 +62,7 @@ function addTask(){
     pMethod.appendChild(document.createTextNode(delivery.value));
     //create a delete option
     let deleteLink = document.createElement('img');
-    //adding attribute
+    // adding attribute
     deleteLink.setAttribute('src', 'images/cancel.svg');
     //creating a div to house the created p tags
     let cardHold = document.createElement('div');
@@ -72,11 +72,15 @@ function addTask(){
     cardHold.appendChild(pName);
     cardHold.appendChild(pPrice);
     cardHold.appendChild(pMethod);
-    // cardHold.appendChild(deleteLink)
+    cardHold.appendChild(deleteLink);
     //appending the div to a div in the ul for display
     container.appendChild(cardHold); 
       }
 }
+
+// function removeFromUI(e){
+//     e.target.parentElement.
+// }
 
 //saving to local storage
 function saveToLS(value){
@@ -97,7 +101,7 @@ let productArray = [];
 }
 }
 
-//Persisting the ul contents even if reloaded
+//Persisting the ul contents when reloaded
 function persistor(){
     let localArray;
     //conditional to check if the local storage contains 'product'
@@ -106,7 +110,7 @@ function persistor(){
     }else {
      localArray = JSON.parse(localStorage.getItem('product'));
      }
- 
+    //  container.style.display = 'flex';
      //using forEach to loop through the local storage and display on ui
    localArray.forEach(function(element){
     let pName = document.createElement('p');
@@ -115,12 +119,19 @@ function persistor(){
     pPrice.appendChild(document.createTextNode(element.productPrice));
     let pMethod = document.createElement('p');
     pMethod.appendChild(document.createTextNode(element.deliveryMethod));
+    //create a delete option
+    let deleteLink = document.createElement('img');
+    // adding attribute
+    deleteLink.setAttribute('src', 'images/cancel.svg');
+    //creating a div to house the created p tags
+    let cardHold = document.createElement('div');
     
-    const cardHold = document.createElement('div');
      cardHold.className = 'cardHold';
     cardHold.appendChild(pName);
     cardHold.appendChild(pPrice);
     cardHold.appendChild(pMethod);
+    cardHold.appendChild(deleteLink)
+
     container.appendChild(cardHold)
    });
 }
