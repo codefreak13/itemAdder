@@ -144,34 +144,42 @@ function persistor(){
     cardHold.appendChild(pDelete)
 
     container.appendChild(cardHold)
-   });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          });
 }
-
 
 //Saves this value retrieved local storage
-const storage = localStorage.getItem('auth');
+// const storage = localStorage.getItem('auth');
 
-//saving to local storage as well as returninng the value 
-function save(value){
-  localStorage.setItem('auth', value)
-  return value
-}
+// //saving to local storage as well as returninng the value 
+// function save(value){
+//   localStorage.setItem('auth', value)
+//   return value
+// }
 
-/*conditional to check if in local storage. 
-If in LS, it displays the LS value stored in storage*/
-if(storage) {
-    firstName.innerHTML += storage
+// /*conditional to check if in local storage. 
+// If in LS, it displays the LS value stored in storage*/
+// if(storage) {
+//     firstName.innerHTML += storage
+// }else{
+//     //else it prompts for input
+//     let name = prompt('what is your name?')
+//     //checks if input value is null or empty and displays 'welcome'
+//     if (name == null || name == ''){
+//         firstName.innerHTML = 'Welcome'
+//     }  else {
+//         /*else displays the content in 'firstName' p tag and the
+//          prompt value saved to local storage*/
+//         firstName.innerHTML += save(name)
+//     }
+// }
+
+//same function as above but shorter
+if(localStorage.getItem('name') == null){
+    let name = prompt('what is your name?');
+    localStorage.setItem('name', name);
+    firstName.innerHTML += name
 }else{
-    //else it prompts for input
-    let name = prompt('what is your name?')
-    //checks if input value is null or empty and displays 'welcome'
-    if (name == null || name == ''){
-        firstName.innerHTML = 'Welcome'
-    }  else {
-        /*else displays the content in 'firstName' p tag and the
-         prompt value saved to local storage*/
-        firstName.innerHTML += save(name)
-    }
+    firstName.innerHTML += localStorage.getItem('name')
 }
 
 //This function redirects out of the current page ie logging out
