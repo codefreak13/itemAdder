@@ -84,32 +84,12 @@ function addTask() {
   }
 }
 
-//removing card from UI
-function removeFromUI(e) {
-  if (e.target.classList.contains('delete')) {
-    e.target.parentElement.parentElement.remove()
-  };
-  removeFromLS(e.target.parentElement.parentElement)
-  // console.log(e.target.parentElement.parentElement.children[0].textContent)
-}
-
-//Removing card from local storage
-function removeFromLS(task) {
-  let savedData = JSON.parse(localStorage.getItem('product'));
-  savedData.forEach(function (item, index) {
-    if (task.children[0].textContent === item.productName) {
-      savedData.splice(index, 1)
-    }
-  })
-  localStorage.setItem('product', JSON.stringify(savedData))
-}
-
 //saving to local storage
 function saveToLS(value) {
   //declaring an empty array to house the object created
   let productArray = [];
   //a conditional for saving and retrieving data from trom the local storage
-  if (product.value !== '' || price.value !== '' || delivery.value !== '') {
+  if (product.value !== '' && price.value !== '' && delivery.value !== '') {
     if (localStorage.getItem('product') == null) {
       productArray.push(value);
       //stringify the array before saving to local storage
@@ -160,6 +140,26 @@ function persistor() {
 
     container.appendChild(cardHold)
   });
+}
+
+//removing card from UI
+function removeFromUI(e) {
+  if (e.target.classList.contains('delete')) {
+    e.target.parentElement.parentElement.remove()
+  };
+  removeFromLS(e.target.parentElement.parentElement)
+  // console.log(e.target.parentElement.parentElement.children[0].textContent)
+}
+
+//Removing card from local storage
+function removeFromLS(task) {
+  let savedData = JSON.parse(localStorage.getItem('product'));
+  savedData.forEach(function (item, index) {
+    if (task.children[0].textContent === item.productName) {
+      savedData.splice(index, 1)
+    }
+  })
+  localStorage.setItem('product', JSON.stringify(savedData))
 }
 
 //Saves this value retrieved local storage
